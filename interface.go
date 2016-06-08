@@ -6,7 +6,14 @@ var (
 	FMTERR = errors.New("The bencode format is error")
 )
 
+// The element of List may be integer, string, List, Dict.
+// Integer is one of int, int8, int16, int32, int64, uint, uint8, uint16,
+// uint32, uint64.
 type List []interface{}
+
+// The element of List may be integer, string, List, Dict.
+// Integer is one of int, int8, int16, int32, int64, uint, uint8, uint16,
+// uint32, uint64.
 type Dict map[string]interface{}
 
 type IBEncode interface {
@@ -29,8 +36,26 @@ func BEncode(v interface{}) []byte {
 	switch v.(type) {
 	case int:
 		return _bencoder.Int64(int64(v.(int)))
+	case int8:
+		return _bencoder.Int64(int64(v.(int8)))
+	case int16:
+		return _bencoder.Int64(int64(v.(int16)))
+	case int32:
+		return _bencoder.Int64(int64(v.(int32)))
 	case int64:
 		return _bencoder.Int64(v.(int64))
+
+	case uint:
+		return _bencoder.Int64(int64(v.(uint)))
+	case uint8:
+		return _bencoder.Int64(int64(v.(uint8)))
+	case uint16:
+		return _bencoder.Int64(int64(v.(uint16)))
+	case uint32:
+		return _bencoder.Int64(int64(v.(uint32)))
+	case uint64:
+		return _bencoder.Int64(int64(v.(uint64)))
+
 	case string:
 		return _bencoder.String(v.(string))
 	case List:

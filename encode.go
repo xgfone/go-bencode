@@ -25,10 +25,26 @@ func (b bencoder) List(v List) []byte {
 	var tmp []byte
 	for _, e := range v {
 		switch e.(type) {
-		case int:
-			tmp = b.Int64(int64(e.(int)))
+		case int8:
+			tmp := b.Int64(int64(e.(int8)))
+		case int16:
+			tmp = b.Int64(int64(e.(int16)))
+		case int32:
+			tmp = b.Int64(int64(e.(int32)))
 		case int64:
 			tmp = b.Int64(e.(int64))
+		case int:
+			tmp = b.Int64(int64(e.(int)))
+		case uint8:
+			tmp = b.Int64(int64(e.(uint8)))
+		case uint16:
+			tmp = b.Int64(int64(e.(uint16)))
+		case uint32:
+			tmp = b.Int64(int64(e.(uint32)))
+		case uint64:
+			tmp = b.Int64(int64(e.(uint64)))
+		case uint:
+			tmp = b.Int64(int64(e.(uint)))
 		case string:
 			tmp = b.String(e.(string))
 		case List:
@@ -60,8 +76,26 @@ func (b bencoder) Dict(v Dict) []byte {
 		switch value.(type) {
 		case int:
 			_value = b.Int64(int64(value.(int)))
+		case int8:
+			_value = b.Int64(int64(value.(int8)))
+		case int16:
+			_value = b.Int64(int64(value.(int16)))
+		case int32:
+			_value = b.Int64(int64(value.(int32)))
 		case int64:
 			_value = b.Int64(value.(int64))
+
+		case uint:
+			_value = b.Int64(int64(value.(uint)))
+		case uint8:
+			_value = b.Int64(int64(value.(uint8)))
+		case uint16:
+			_value = b.Int64(int64(value.(uint16)))
+		case uint32:
+			_value = b.Int64(int64(value.(uint32)))
+		case uint64:
+			_value = b.Int64(int64(value.(uint64)))
+
 		case string:
 			_value = b.String(value.(string))
 		case List:
