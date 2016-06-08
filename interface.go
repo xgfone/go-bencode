@@ -8,12 +8,12 @@ var (
 
 // The element of List may be integer, string, List, Dict.
 // Integer is one of int, int8, int16, int32, int64, uint, uint8, uint16,
-// uint32, uint64.
+// uint32, uint64. When decoding the data, integer is int64.
 type List []interface{}
 
 // The element of List may be integer, string, List, Dict.
 // Integer is one of int, int8, int16, int32, int64, uint, uint8, uint16,
-// uint32, uint64.
+// uint32, uint64. When decoding the data, integer is int64.
 type Dict map[string]interface{}
 
 type IBEncode interface {
