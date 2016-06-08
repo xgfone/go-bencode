@@ -26,7 +26,7 @@ func (b bencoder) List(v List) []byte {
 	for _, e := range v {
 		switch e.(type) {
 		case int8:
-			tmp := b.Int64(int64(e.(int8)))
+			tmp = b.Int64(int64(e.(int8)))
 		case int16:
 			tmp = b.Int64(int64(e.(int16)))
 		case int32:
