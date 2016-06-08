@@ -11,21 +11,25 @@ func NewBDecode() IBDecode {
 	return bdecoder{}
 }
 
+// Decode the buffer to int64. If success, err is nil.
 func (b bdecoder) Int64(buf []byte) (v int64, err error) {
 	v, _, err = b.toInt64(buf)
 	return
 }
 
+// Decode the buffer to string. If success, err is nil.
 func (b bdecoder) String(buf []byte) (v string, err error) {
 	v, _, err = b.toString(buf)
 	return
 }
 
+// Decode the buffer to List. If success, err is nil.
 func (b bdecoder) List(buf []byte) (v List, err error) {
 	v, _, err = b.toList(buf)
 	return
 }
 
+// Decode the buffer to Dict. If success, err is nil.
 func (b bdecoder) Dict(buf []byte) (v Dict, err error) {
 	v, _, err = b.toDict(buf)
 	return

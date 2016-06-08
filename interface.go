@@ -32,6 +32,12 @@ type IBDecode interface {
 
 var _bencoder bencoder
 
+// Encode the argument of v.
+//
+// The argument of v is one of the integer, string, List, Dict.
+//
+// Integer is one of int, int8, int16, int32, int64, uint, uint8, uint16,
+// uint32, uint64.
 func BEncode(v interface{}) []byte {
 	switch v.(type) {
 	case int:
@@ -69,6 +75,9 @@ func BEncode(v interface{}) []byte {
 
 var _bdecoder bdecoder
 
+// Decode the buffer to int64, string, List, or Dict.
+//
+// If List and Dict contain the integer, it is int64.
 func BDecode(buf []byte) (interface{}, error) {
 	var (
 		result interface{}

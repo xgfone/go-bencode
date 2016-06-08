@@ -12,14 +12,17 @@ func NewBEncode() IBEncode {
 	return bencoder{}
 }
 
+// Encode the value of int64.
 func (b bencoder) Int64(v int64) []byte {
 	return []byte(fmt.Sprintf("i%de", v))
 }
 
+// Encode the value of string.
 func (b bencoder) String(v string) []byte {
 	return []byte(fmt.Sprintf("%d:%s", len(v), v))
 }
 
+// Encode the value of List.
 func (b bencoder) List(v List) []byte {
 	var buf bytes.Buffer
 	var tmp []byte
@@ -64,6 +67,7 @@ func (b bencoder) List(v List) []byte {
 	return []byte(fmt.Sprintf("l%se", buf.Bytes()))
 }
 
+// Encode the value of Dict.
 func (b bencoder) Dict(v Dict) []byte {
 	keys := getKeyList(v)
 	sort.Strings(keys)
